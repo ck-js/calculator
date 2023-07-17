@@ -29,15 +29,47 @@ gap: 20px;
 
 .calculator-window {
     background-color: bisque;
-    filter: brightness(0.7);
+    
     height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    /* color: black; */
     font-size: 100px;
 }
+
+.calc {
+    display: flex;
+    flex-direction: column;
+} 
 .calculator-container {
+ background-color: black;   
+ height: 500px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     
+}
+.calculator-top {
+    display: flex;
+    flex-direction: row;
     
+}
+
+
+.calculator-display {
+    color: bisque;
+display: flex;
+justify-content: center;
+align-items: center;
+border: 5px solid white;
+flex: 1 1  auto;
+}
+
+.calculator-buttons{
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
