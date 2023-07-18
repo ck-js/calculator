@@ -1,5 +1,5 @@
-let firstNumber = 0;
-let secondNumber = 0;
+let firstNumber = '';
+let secondNumber = '';
 let operator;
 
 
@@ -33,3 +33,24 @@ function operate(a,b, operator, fn) {
 let result = fn(a + operator + b)
 return result;
 }
+
+const buttonsContainer = document.querySelector('.calculator-buttons')
+const buttonsNodeList = buttonsContainer.querySelectorAll('button')
+// console.log(buttonsNodeList);
+
+const display = document.querySelector('.calculator-display')
+
+function updateFirstNumber(...args) {
+    let numbers = args;
+    firstNumber += numbers;
+    }
+function updateDisplay() {
+    return display.textContent = firstNumber; 
+}
+
+
+
+buttonsNodeList[2].addEventListener('click', () => {
+updateFirstNumber(7)
+updateDisplay()
+} )

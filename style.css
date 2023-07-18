@@ -81,36 +81,38 @@ padding-right: 5px;
         align-items: center;
          */
 }
-
 .row1 {
     display: grid;
     grid-template: 60px / 60px 60px 60px 60px;
+    grid-gap:  10px;
 }
 #ac {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 2;
 }
 #divide {
-    grid-column: 4 / span 1;
+    grid-column: 4 / span 2;
 }
 
 
 .row2 {
     display: grid;
     grid-template: 60px / 60px 60px 60px 60px;
+    grid-gap:  10px;
 }
 .row3 {
     display: grid;
     grid-template: 60px / 60px 60px 60px 60px;
+    grid-gap:  10px;
 }
 .row4 {
     display: grid;
     grid-template: 60px / 60px 60px 60px 60px;
-
+    grid-gap:  10px;
 }
 .row5 {
     display: grid;
     grid-template: 60px / 120px 60px 60px;
-
+    grid-gap:  10px;
 }
 
 .calculator-buttons button {
