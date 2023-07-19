@@ -2,21 +2,21 @@ let allValues = '';
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
-
+let result = [];
 
 
 function add(...args) {
     let additionArray = args;
     const addition = additionArray.reduce((sum, current) => 
          sum + current);
+         result.push (addition);
        return display.textContent = addition;
         
 }
-// console.log(add(25,25,25,25));
 
 function subtract(a,  b) {
-const subtraction = +a - +b
-console.log(typeof subtraction);
+const subtraction = a - b
+result.push(subtraction)
         return display.textContent = subtraction
 }
 // subtract(100,25)
@@ -104,6 +104,7 @@ buttonsNodeList[9].addEventListener('click', () => {
 buttonsNodeList[13].addEventListener('click', () => {
 userInput('+')
     updateDisplay
+    
 })
 buttonsNodeList[16].addEventListener('click', () => {
     destructureAllValues()
