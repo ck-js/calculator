@@ -15,9 +15,9 @@ function add(...args) {
 // console.log(add(25,25,25,25));
 
 function subtract(a,  b) {
-const subtraction = a - b
-    console.log(subtraction);
-    return subtraction
+const subtraction = +a - +b
+console.log(typeof subtraction);
+        return display.textContent = subtraction
 }
 // subtract(100,25)
 
@@ -34,8 +34,10 @@ function divide(a, b) {
 function operate() {
 if (operator === '+') {
     add(+firstNumber, +secondNumber)
+} 
+if (operator === '-') {
+    subtract(+firstNumber, +secondNumber)
 }
-
 }
 
 const buttonsContainer = document.querySelector('.calculator-buttons')
@@ -53,14 +55,23 @@ function checkOperator(input) {
     input = allValues;
     if (input.includes('+')) {
         return operator = '+';
+    }
+    if (input.includes('-')) {
+return operator = '-'
         }
-        
 }
 function destructureAllValues() {
     let str = allValues;
-    const [first, second] = str.split('+');
-firstNumber = first;
+   let [first, second] = '';
+    if (str.includes('+')) {
+    [first, second] = str.split('+') 
+    }
+    if (str.includes('-')) {
+        [first, second] = str.split('-') 
+    }
+    firstNumber = first;
 secondNumber = second;
+console.log(second);
 }
 
 
@@ -68,12 +79,28 @@ secondNumber = second;
     return display.textContent = allValues; 
 }
 
+function clearAc() {
+    allValues = '';
+    firstNumber = '';
+    secondNumber = '';
+    display.textContent = '';
+    
+    }
+
+    
 
 
+    buttonsNodeList[0].addEventListener('click', () => {
+        clearAc();
+    })
 buttonsNodeList[2].addEventListener('click', () => {
 userInput(7)
 updateDisplay()
 } )
+buttonsNodeList[9].addEventListener('click', () => {
+    userInput('-')
+    updateDisplay()
+})
 buttonsNodeList[13].addEventListener('click', () => {
 userInput('+')
     updateDisplay
@@ -81,4 +108,5 @@ userInput('+')
 buttonsNodeList[16].addEventListener('click', () => {
     destructureAllValues()
 operate();
+
 })
