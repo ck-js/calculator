@@ -1,6 +1,7 @@
+let allValues = '';
 let firstNumber = '';
 let secondNumber = '';
-let operator;
+let operator = '';
 
 
 
@@ -29,9 +30,9 @@ function divide(a, b) {
     return division;
 }
 
-function operate(a,b, operator, fn) {
-let result = fn(a + operator + b)
-return result;
+function operate() {
+return firstNumber + operator + secondNumber;
+
 }
 
 const buttonsContainer = document.querySelector('.calculator-buttons')
@@ -40,17 +41,40 @@ const buttonsNodeList = buttonsContainer.querySelectorAll('button')
 
 const display = document.querySelector('.calculator-display')
 
-function updateFirstNumber(...args) {
-    let numbers = args;
-    firstNumber += numbers;
+function userInput(...args) {
+    let values = args;
+    allValues += values;
+    checkOperator();
     }
-function updateDisplay() {
-    return display.textContent = firstNumber; 
+function checkOperator(input) {
+    input = allValues;
+    if (input.includes('+')) {
+        return operator = '+';
+        }
+        
+}
+function destructureAllValues() {
+    let str = allValues;
+    const [first, second] = str.split('+');
+firstNumber = first;
+secondNumber = second;
 }
 
 
+    function updateDisplay() {
+    return display.textContent = allValues; 
+}
+
 
 buttonsNodeList[2].addEventListener('click', () => {
-updateFirstNumber(7)
+userInput(7)
 updateDisplay()
 } )
+buttonsNodeList[13].addEventListener('click', () => {
+userInput('+')
+    updateDisplay
+})
+buttonsNodeList[16].addEventListener('click', () => {
+    destructureAllValues()
+  alert(firstNumber)  
+})
