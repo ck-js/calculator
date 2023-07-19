@@ -9,7 +9,8 @@ function add(...args) {
     let additionArray = args;
     const addition = additionArray.reduce((sum, current) => 
          sum + current);
-        return `Total: ${addition}`
+       return display.textContent = addition;
+        
 }
 // console.log(add(25,25,25,25));
 
@@ -31,7 +32,9 @@ function divide(a, b) {
 }
 
 function operate() {
-return firstNumber + operator + secondNumber;
+if (operator === '+') {
+    add(+firstNumber, +secondNumber)
+}
 
 }
 
@@ -66,6 +69,7 @@ secondNumber = second;
 }
 
 
+
 buttonsNodeList[2].addEventListener('click', () => {
 userInput(7)
 updateDisplay()
@@ -76,5 +80,5 @@ userInput('+')
 })
 buttonsNodeList[16].addEventListener('click', () => {
     destructureAllValues()
-  alert(firstNumber)  
+operate();
 })
