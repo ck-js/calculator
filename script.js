@@ -1,7 +1,7 @@
 let allValues = '';
 let firstNumber = '';
 let secondNumber = '';
-let operator = '';
+let operator = [];
 let result = [];
 
 
@@ -10,6 +10,7 @@ function add(...args) {
     const addition = additionArray.reduce((sum, current) => 
          sum + current);
          result.push (addition);
+         console.log(addition);
        return display.textContent = addition;
         
 }
@@ -32,10 +33,10 @@ function divide(a, b) {
 }
 
 function operate() {
-if (operator === '+') {
+if (operator[operator.length - 1] === '+') {
     add(+firstNumber, +secondNumber)
 } 
-if (operator === '-') {
+if (operator[operator.length - 1] === '-') {
     subtract(+firstNumber, +secondNumber)
 }
 }
@@ -54,10 +55,12 @@ function userInput(...args) {
 function checkOperator(input) {
     input = allValues;
     if (input.includes('+')) {
-        return operator = '+';
+        // return operator = '+';
+        return operator.push('+')
     }
     if (input.includes('-')) {
-return operator = '-'
+// return operator = '-'
+return operator.push('-')
         }
 }
 function destructureAllValues() {
@@ -87,6 +90,11 @@ function clearAc() {
     
     }
 
+    function isStringCalculation() {
+        if (operator.length > 1) {
+            return true;
+        }
+    }
     
 
 
@@ -104,7 +112,8 @@ buttonsNodeList[9].addEventListener('click', () => {
 buttonsNodeList[13].addEventListener('click', () => {
 userInput('+')
     updateDisplay
-    
+isStringCalculation()
+
 })
 buttonsNodeList[16].addEventListener('click', () => {
     destructureAllValues()
