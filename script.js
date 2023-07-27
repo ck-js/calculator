@@ -1,3 +1,4 @@
+
 const currentDisplay = document.querySelector('.calculator-display')
 currentDisplay.textContent = '55555'
 const previousDisplay = document.querySelector('.previous-display')
@@ -15,16 +16,39 @@ addNumber(e.target.textContent)
 ))
 operatorBtns.forEach(btn => 
     btn.addEventListener('click', e =>
-    alert(e.target.textContent)))
+    addOperator(e.target.textContent))
+    )
 
 zeroBtn.addEventListener('click', e => {
     alert(e.target.textContent)
 })
 
 function addNumber(e) {
-currentObject['firstNum'] += [e];
-currentDisplay.textContent = currentObject.firstNum
+
+    if (!('firstNum' in currentObject) && (
+        !('operator' in currentObject))) {
+        currentObject['firstNum'] = e;
+        currentObject['firstNum'] += e;
+    }
+        
+
+    if (('firstNum' in currentObject) && (
+        'operator' in currentObject)) {
+currentObject['secondNum'] = e;
+currentObject['secondNum'] += e;
+    }
+        
+    }
+function addOperator(e) {
+
+    if (!('operator' in currentObject)) {
+        currentObject['operator'] = e;
+    }else {
+        currentObject['operator'] = e;
+    }
+    
 }
+
 
 
 
