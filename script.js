@@ -1,17 +1,64 @@
-let allValues = '';
-let firstNumber = '';
-let secondNumber = '';
-let operator = [];
-let result = [];
+const currentDisplay = document.querySelector('.calculator-display')
+currentDisplay.textContent = '55555'
+const previousDisplay = document.querySelector('.previous-display')
+
+const currentObject = {}
+const previousObject = {}
+
+const numberBtns = Array.from(document.getElementsByClassName('number-btn'))
+const operatorBtns = Array.from(document.getElementsByClassName('operator-btn'))
+const zeroBtn = document.getElementById('0')
+
+numberBtns.forEach(btn => 
+    btn.addEventListener('click', e =>
+addNumber(e.target.textContent)
+))
+operatorBtns.forEach(btn => 
+    btn.addEventListener('click', e =>
+    alert(e.target.textContent)))
+
+zeroBtn.addEventListener('click', e => {
+    alert(e.target.textContent)
+})
+
+function addNumber(e) {
+currentObject['firstNum'] += [e];
+currentDisplay.textContent = currentObject.firstNum
+}
+
+
+
+
+
+
+function Operation(firstNum,secondNum,operator) {
+    this.firstNum = firstNum;
+    this.secondNum = secondNum;
+    this.operator = operator;
+    this.calculate = function() {
+        if (this.operator === '+') {
+            const result = this.firstNum+ this.secondNum;
+console.log(result);
+            return result;
+        }
+        if (this.operator === '-') {
+            const result = firstNum - secondNum;
+            console.log(result);
+            return result;
+        }
+        
+    }
+}
+
+
+
 
 
 function add(...args) {
     let additionArray = args;
     const addition = additionArray.reduce((sum, current) => 
          sum + current);
-         result.push (addition);
-         console.log(addition);
-       return display.textContent = addition;
+               return addition
         
 }
 
@@ -32,91 +79,3 @@ function divide(a, b) {
     return division;
 }
 
-function operate() {
-if (operator[operator.length - 1] === '+') {
-    add(+firstNumber, +secondNumber)
-} 
-if (operator[operator.length - 1] === '-') {
-    subtract(+firstNumber, +secondNumber)
-}
-}
-
-const buttonsContainer = document.querySelector('.calculator-buttons')
-const buttonsNodeList = buttonsContainer.querySelectorAll('button')
-// console.log(buttonsNodeList);
-
-const display = document.querySelector('.calculator-display')
-
-function userInput(...args) {
-    let values = args;
-    allValues += values;
-    checkOperator();
-    }
-function checkOperator(input) {
-    input = allValues;
-    if (input.includes('+')) {
-        // return operator = '+';
-        return operator.push('+')
-    }
-    if (input.includes('-')) {
-// return operator = '-'
-return operator.push('-')
-        }
-}
-function destructureAllValues() {
-    let str = allValues;
-   let [first, second] = '';
-    if (str.includes('+')) {
-    [first, second] = str.split('+') 
-    }
-    if (str.includes('-')) {
-        [first, second] = str.split('-') 
-    }
-    firstNumber = first;
-secondNumber = second;
-console.log(second);
-}
-
-
-    function updateDisplay() {
-    return display.textContent = allValues; 
-}
-
-function clearAc() {
-    allValues = '';
-    firstNumber = '';
-    secondNumber = '';
-    display.textContent = '';
-    
-    }
-
-    function isStringCalculation() {
-        if (operator.length > 1) {
-            return true;
-        }
-    }
-    
-
-
-    buttonsNodeList[0].addEventListener('click', () => {
-        clearAc();
-    })
-buttonsNodeList[2].addEventListener('click', () => {
-userInput(7)
-updateDisplay()
-} )
-buttonsNodeList[9].addEventListener('click', () => {
-    userInput('-')
-    updateDisplay()
-})
-buttonsNodeList[13].addEventListener('click', () => {
-userInput('+')
-    updateDisplay
-isStringCalculation()
-
-})
-buttonsNodeList[16].addEventListener('click', () => {
-    destructureAllValues()
-operate();
-
-})
