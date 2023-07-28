@@ -25,19 +25,31 @@ zeroBtn.addEventListener('click', e => {
 
 function addNumber(e) {
 
-    if (!('firstNum' in currentObject) && (
+    if (!('secondNum' in currentObject) && (
         !('operator' in currentObject))) {
-        currentObject['firstNum'] = e;
-        currentObject['firstNum'] += e;
+    if (!('firstNum' in currentObject)) {
+currentObject['firstNum'] = '';
+currentObject['firstNum'] += e;
+} else {
+currentObject['firstNum'] += e;    
+}
     }
-        
 
-    if (('firstNum' in currentObject) && (
-        'operator' in currentObject)) {
-currentObject['secondNum'] = e;
-currentObject['secondNum'] += e;
+if (('firstNum' in currentObject) && (
+    'operator' in currentObject)) {
+        if (!('secondNum' in currentObject)) {
+        currentObject['secondNum'] = '';
+        currentObject['secondNum'] += e;
+    }    else {
+        currentObject['secondNum'] += e;
     }
-        
+}
+
+
+    
+currentDisplay.textContent = currentObject['firstNum']
+console.log(currentObject);
+
     }
 function addOperator(e) {
 
