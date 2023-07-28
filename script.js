@@ -9,6 +9,7 @@ const previousObject = {}
 const numberBtns = Array.from(document.getElementsByClassName('number-btn'))
 const operatorBtns = Array.from(document.getElementsByClassName('operator-btn'))
 const zeroBtn = document.getElementById('0')
+const equal = document.getElementById('equal')
 
 numberBtns.forEach(btn => 
     btn.addEventListener('click', e =>
@@ -22,6 +23,24 @@ operatorBtns.forEach(btn =>
 zeroBtn.addEventListener('click', e => {
     alert(e.target.textContent)
 })
+
+equal.addEventListener('click', calculate)
+
+
+
+function calculate() {
+
+    currentObject.calculate = function() {
+if (this.operator === '+') {
+    let result = `${+this.firstNum + +this.secondNum}`
+    alert(result)
+    // currentObject['result'] = result
+    addResult(result)
+}
+    }
+currentObject.calculate();
+}
+
 
 function addNumber(e) {
 
@@ -45,10 +64,9 @@ if (('firstNum' in currentObject) && (
     }
 }
 
-
-    
+   
 currentDisplay.textContent = currentObject['firstNum']
-console.log(currentObject);
+
 
     }
 function addOperator(e) {
@@ -60,6 +78,13 @@ function addOperator(e) {
     }
     
 }
+
+function addResult(number) {
+    currentObject['result'] = number;
+    
+    }
+    
+
 
 
 
