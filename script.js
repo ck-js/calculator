@@ -4,7 +4,7 @@ currentDisplay.textContent = '55555'
 const previousDisplay = document.querySelector('.previous-display')
 
 const currentObject = {}
-const previousObject = {}
+const nextObject = {}
 
 const numberBtns = Array.from(document.getElementsByClassName('number-btn'))
 const operatorBtns = Array.from(document.getElementsByClassName('operator-btn'))
@@ -24,7 +24,10 @@ zeroBtn.addEventListener('click', e => {
     alert(e.target.textContent)
 })
 
-equal.addEventListener('click', calculate)
+equal.addEventListener('click', () => {
+    calculate();
+    displayResult();
+})
 
 
 function addNumber(e) {
@@ -67,13 +70,26 @@ function updateCurrentDisplay() {
 
 function addOperator(e) {
 
-    if (!('operator' in currentObject)) {
-        currentObject['operator'] = e;
-    }else {
-        currentObject['operator'] = e;
-    }
+!('secondNum' in currentObject) ?
+currentObject['operator'] = e :
+nextObject['operator'] = e;
+
+
+    // if (!('operator' in currentObject)) {
+    //     currentObject['operator'] = e;
+    // }else {
+    //     currentObject['operator'] = e;
+    // }
     
+    ('operator' in nextObject) ?
+    nextObject['firstNum'] = currentObject['result'] :
+    
+    alert('Second operation has not began');
+    
+
 }
+
+ 
 
 function calculate() {
 
@@ -111,7 +127,12 @@ function addResult(number) {
     
     }
     
+function displayResult() {
 
+currentDisplay.textContent =
+currentObject['result']
+
+} 
 
 
 
