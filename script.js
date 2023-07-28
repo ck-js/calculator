@@ -27,21 +27,6 @@ zeroBtn.addEventListener('click', e => {
 equal.addEventListener('click', calculate)
 
 
-
-function calculate() {
-
-    currentObject.calculate = function() {
-if (this.operator === '+') {
-    let result = `${+this.firstNum + +this.secondNum}`
-    alert(result)
-    // currentObject['result'] = result
-    addResult(result)
-}
-    }
-currentObject.calculate();
-}
-
-
 function addNumber(e) {
 
     if (!('secondNum' in currentObject) && (
@@ -64,11 +49,22 @@ if (('firstNum' in currentObject) && (
     }
 }
 
-   
-currentDisplay.textContent = currentObject['firstNum']
+   updateCurrentDisplay();
+
 
 
     }
+
+function updateCurrentDisplay() {
+    !('secondNum' in currentObject) ?
+    currentDisplay.textContent = currentObject['firstNum'] :
+    currentDisplay.textContent = currentObject['secondNum']; 
+}
+
+
+
+
+
 function addOperator(e) {
 
     if (!('operator' in currentObject)) {
@@ -77,6 +73,37 @@ function addOperator(e) {
         currentObject['operator'] = e;
     }
     
+}
+
+function calculate() {
+
+    currentObject.calculate = function() {
+if (this.operator === '+') {
+    let result = `${+this.firstNum + +this.secondNum}`
+    alert(result)
+    // currentObject['result'] = result
+    addResult(result)
+}
+if (this.operator === '-') {
+    let result = `${+this.firstNum - +this.secondNum}`
+    alert(result)
+    // currentObject['result'] = result
+    addResult(result)
+}
+if (this.operator === '*') {
+    let result = `${+this.firstNum * +this.secondNum}`
+    alert(result)
+    // currentObject['result'] = result
+    addResult(result)
+}
+if (this.operator === '/') {
+    let result = `${+this.firstNum / +this.secondNum}`
+    alert(result)
+    // currentObject['result'] = result
+    addResult(result)
+}
+}
+currentObject.calculate();
 }
 
 function addResult(number) {
