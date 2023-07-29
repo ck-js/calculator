@@ -26,11 +26,14 @@ zeroBtn.addEventListener('click', e => {
 
 equal.addEventListener('click', () => {
     
-    !('operator' in nextObject) ?
-    calculate(currentObject) :
+   if (!('operator' in nextObject)) {
+    calculate(currentObject);
+    displayResult(currentObject); 
+   } else {
     calculate(nextObject);
-
-    displayResult();
+    displayResult(nextObject); 
+}
+    
 })
 
 
@@ -76,11 +79,14 @@ nextObject['secondNum'] += e;
     }
 
 function updateCurrentDisplay() {
+    if (!('secondNum' in nextObject)) {
     !('secondNum' in currentObject) ?
     currentDisplay.textContent = currentObject['firstNum'] :
     currentDisplay.textContent = currentObject['secondNum']; 
+} else {
+    currentDisplay.textContent = nextObject['secondNum']; 
 }
-
+}
 
 
 
@@ -120,39 +126,39 @@ if (this.operator === '+') {
     let result = `${+this.firstNum + +this.secondNum}`
     alert(result)
     // currentObject['result'] = result
-    addResult(result)
+    addResult(obj, result)
 }
 if (this.operator === '-') {
     let result = `${+this.firstNum - +this.secondNum}`
     alert(result)
     // currentObject['result'] = result
-    addResult(result)
+    addResult(obj, result)
 }
 if (this.operator === '*') {
     let result = `${+this.firstNum * +this.secondNum}`
     alert(result)
     // currentObject['result'] = result
-    addResult(result)
+    addResult(obj, result)
 }
 if (this.operator === '/') {
     let result = `${+this.firstNum / +this.secondNum}`
     alert(result)
     // currentObject['result'] = result
-    addResult(result)
+    addResult(obj, result)
 }
 }
 obj.calculate();
 }
 
-function addResult(number) {
-    currentObject['result'] = number;
+function addResult(obj, number) {
+    obj['result'] = number;
     
     }
     
-function displayResult() {
+function displayResult(obj) {
 
 currentDisplay.textContent =
-currentObject['result']
+obj['result']
 
 } 
 
