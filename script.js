@@ -32,6 +32,7 @@ equal.addEventListener('click', () => {
 
 function addNumber(e) {
 
+    
     if (!('secondNum' in currentObject) && (
         !('operator' in currentObject))) {
     if (!('firstNum' in currentObject)) {
@@ -42,6 +43,7 @@ currentObject['firstNum'] += e;
 }
     }
 
+if (!('operator' in nextObject)) {
 if (('firstNum' in currentObject) && (
     'operator' in currentObject)) {
         if (!('secondNum' in currentObject)) {
@@ -51,7 +53,18 @@ if (('firstNum' in currentObject) && (
         currentObject['secondNum'] += e;
     }
 }
+}
 
+if (('firstNum' in nextObject) && 
+('operator' in nextObject)) {
+if (!('secondNum' in nextObject)) {
+nextObject['secondNum'] = '';
+nextObject['secondNum'] += e;
+
+} else {
+    nextObject['secondNum'] += e;
+}
+}
    updateCurrentDisplay();
 
 
@@ -81,13 +94,18 @@ nextObject['operator'] = e;
     //     currentObject['operator'] = e;
     // }
     
-    ('operator' in nextObject) ?
-    nextObject['firstNum'] = currentObject['result'] :
-    
-    alert('Second operation has not began');
-    
-
+addFirstResultToSecondOperation() 
 }
+
+
+function addFirstResultToSecondOperation() {
+('operator' in nextObject) ?
+nextObject['firstNum'] = currentObject['result'] :
+
+console.log('Second operation has not began');
+}
+
+
 
  
 
