@@ -25,7 +25,11 @@ zeroBtn.addEventListener('click', e => {
 })
 
 equal.addEventListener('click', () => {
-    calculate();
+    
+    !('operator' in nextObject) ?
+    calculate(currentObject) :
+    calculate(nextObject);
+
     displayResult();
 })
 
@@ -109,9 +113,9 @@ console.log('Second operation has not began');
 
  
 
-function calculate() {
+function calculate(obj) {
 
-    currentObject.calculate = function() {
+obj.calculate = function() {
 if (this.operator === '+') {
     let result = `${+this.firstNum + +this.secondNum}`
     alert(result)
@@ -137,7 +141,7 @@ if (this.operator === '/') {
     addResult(result)
 }
 }
-currentObject.calculate();
+obj.calculate();
 }
 
 function addResult(number) {
