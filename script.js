@@ -10,6 +10,7 @@ const numberBtns = Array.from(document.getElementsByClassName('number-btn'))
 const operatorBtns = Array.from(document.getElementsByClassName('operator-btn'))
 const zeroBtn = document.getElementById('0')
 const equal = document.getElementById('equal')
+const allClear = document.getElementById('ac')
 
 numberBtns.forEach(btn => 
     btn.addEventListener('click', e =>
@@ -35,6 +36,24 @@ equal.addEventListener('click', () => {
 }
     
 })
+
+allClear.addEventListener('click', () => {
+    clearAllProperties(currentObject)
+    clearAllProperties(nextObject)
+})
+
+function clearAllProperties(obj) {
+    for (let prop in obj) {
+        delete obj[prop];
+    }
+    clearCurrentDisplay()
+    console.log(currentObject);
+}
+function clearCurrentDisplay() {
+currentDisplay.textContent = ' ';
+
+}
+
 
 
 function addNumber(e) {
