@@ -21,8 +21,16 @@ operatorBtns.forEach(btn =>
     addOperator(e.target.textContent))
     )
 
+let firstZeroInput = false;
 zeroBtn.addEventListener('click', e => {
-    alert(e.target.textContent)
+    if (!(firstZeroInput)) {
+        addNumber(e.target.textContent)
+        firstZeroInput = true;
+    }
+if (currentObject.firstNum.length >= 2) {
+    firstZeroInput = false;
+}
+    
 })
 
 equal.addEventListener('click', () => {
@@ -41,19 +49,6 @@ allClear.addEventListener('click', () => {
     clearAllProperties(currentObject)
     clearAllProperties(nextObject)
 })
-
-function clearAllProperties(obj) {
-    for (let prop in obj) {
-        delete obj[prop];
-    }
-    clearCurrentDisplay()
-    console.log(currentObject);
-}
-function clearCurrentDisplay() {
-currentDisplay.textContent = ' ';
-
-}
-
 
 
 function addNumber(e) {
@@ -182,6 +177,18 @@ obj['result']
 } 
 
 
+function clearAllProperties(obj) {
+    for (let prop in obj) {
+        delete obj[prop];
+    }
+    clearCurrentDisplay()
+    console.log(currentObject);
+}
+function clearCurrentDisplay() {
+currentDisplay.textContent = ' ';
+
+}
+
 
 
 
@@ -207,31 +214,4 @@ console.log(result);
 }
 
 
-
-
-
-function add(...args) {
-    let additionArray = args;
-    const addition = additionArray.reduce((sum, current) => 
-         sum + current);
-               return addition
-        
-}
-
-function subtract(a,  b) {
-const subtraction = a - b
-result.push(subtraction)
-        return display.textContent = subtraction
-}
-// subtract(100,25)
-
-function multiply(a, b) {
-    const multiplication = a * b;
-    return multiplication;
-}
-
-function divide(a, b) {
-    const division = a / b;
-    return division;
-}
 
