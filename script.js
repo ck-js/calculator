@@ -46,9 +46,12 @@ if ((currentObject.secondNum.length >= 2)) {
     firstZeroInput = false;
 }
 
-
-
-
+if ('result' in currentObject) {
+    firstZeroInput = true;
+}
+if ((nextObject.secondNum.length >= 2)) {
+    firstZeroInput = false;
+}
 
 
 })
