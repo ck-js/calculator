@@ -53,7 +53,6 @@ if ((nextObject.secondNum.length >= 2)) {
     firstZeroInput = false;
 }
 
-
 })
 
 equal.addEventListener('click', () => {
@@ -72,6 +71,31 @@ allClear.addEventListener('click', () => {
     clearAllProperties(currentObject)
     clearAllProperties(nextObject)
 })
+
+const decimal = document.getElementById('decimal')
+decimal.addEventListener('click', e => {
+    addDecimal(e.target.textContent)
+})
+let decimalInput = false;
+function addDecimal(decimal) {
+    if(!(decimalInput)) {
+    addNumber(decimal)
+    decimalInput = true;
+    }
+
+
+    let secondOperand = currentObject.secondNum.toString()
+
+    if (secondOperand.includes('.')) {
+        decimalInput = true;
+    }
+    
+
+    
+}
+
+    
+
 
 
 function addNumber(e) {
@@ -142,6 +166,8 @@ nextObject['operator'] = e;
     // }
     
 addFirstResultToSecondOperation() 
+
+decimalInput = false;
 }
 
 
