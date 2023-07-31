@@ -23,14 +23,34 @@ operatorBtns.forEach(btn =>
 
 let firstZeroInput = false;
 zeroBtn.addEventListener('click', e => {
+
     if (!(firstZeroInput)) {
         addNumber(e.target.textContent)
         firstZeroInput = true;
     }
-if (currentObject.firstNum.length >= 2) {
+
+if ((currentObject.firstNum.length >= 2)) {
     firstZeroInput = false;
 }
+
+if ('operator' in currentObject) {
+        firstZeroInput = true;
+}
+
+if ('secondNum' in currentObject) {
+    firstZeroInput = false;
     
+    firstZeroInput = true;
+}
+if ((currentObject.secondNum.length >= 2)) {
+    firstZeroInput = false;
+}
+
+
+
+
+
+
 })
 
 equal.addEventListener('click', () => {
