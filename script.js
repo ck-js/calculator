@@ -78,17 +78,33 @@ decimal.addEventListener('click', e => {
 })
 let decimalInput = false;
 function addDecimal(decimal) {
-    if(!(decimalInput)) {
+    
+    if (!('firstNum' in currentObject)) {
+        addNumber('0' +decimal);
+        decimalInput = true;
+    }
+ if (!(decimalInput) && !('secondNum' in currentObject)) {
+            addNumber('0' +decimal);
+                decimalInput = true;
+        }
+        
+        if (!(decimalInput) && !('secondNum' in nextObject)) {
+            addNumber('0' +decimal);
+                decimalInput = true;
+        }
+ 
+
+    else if(!(decimalInput)) {
     addNumber(decimal)
     decimalInput = true;
     }
 
+// this code is not needed after moving the flag variable switch in the add operator function
+// let secondOperand = currentObject.secondNum.toString()
 
-    let secondOperand = currentObject.secondNum.toString()
-
-    if (secondOperand.includes('.')) {
-        decimalInput = true;
-    }
+    // if (secondOperand.includes('.')) {
+    //     decimalInput = true;
+    // }
     
 
     
