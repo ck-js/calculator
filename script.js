@@ -56,7 +56,12 @@ if ((nextObject.secondNum.length >= 2)) {
 })
 
 equal.addEventListener('click', () => {
+
+    if (('firstNum' in currentObject) && ('secondNum' in currentObject) ||
+    ('firstNum' in nextObject) && ('secondNum' in nextObject)){
     
+
+
    if (!('operator' in nextObject)) {
     calculate(currentObject);
     displayResult(currentObject); 
@@ -64,7 +69,14 @@ equal.addEventListener('click', () => {
     calculate(nextObject);
     displayResult(nextObject); 
 }
-    
+    } else {
+        return;
+    }
+
+
+
+
+
 })
 
 allClear.addEventListener('click', () => {
@@ -84,10 +96,8 @@ decimal.addEventListener('click', e => {
 let decimalInput = false;
 function addDecimal(objProp,decimal) {
     
-
+alert(objProp)
     
-
-
 
     if (!(decimalInput) && !(objProp in currentObject) 
     ) {
@@ -102,8 +112,20 @@ function addDecimal(objProp,decimal) {
         addNumber('0' +decimal);
         decimalInput = true; 
         alert('3')
+    }
+
+    if (('firstNum'in nextObject) &&
+    !(decimalInput) &&
+    !('secondNum' in nextObject)) {
+        addNumber('0' +decimal);
+        decimalInput = true; 
+    alert('4')
     
     }
+    
+
+
+
 
     if ((objProp in currentObject) && 
     !(decimalInput)    ) {
@@ -112,7 +134,6 @@ function addDecimal(objProp,decimal) {
             alert('2')
         }
     
-
 
 
 
