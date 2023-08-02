@@ -74,30 +74,70 @@ allClear.addEventListener('click', () => {
 
 const decimal = document.getElementById('decimal')
 decimal.addEventListener('click', e => {
-    addDecimal(e.target.textContent)
+    if (!('secondNum' in currentObject)) {
+    addDecimal('firstNum', e.target.textContent)
+
+    } else {
+        addDecimal('secondNum', e.target.textContent)
+    }
 })
 let decimalInput = false;
-function addDecimal(decimal) {
+function addDecimal(objProp,decimal) {
     
-    if (!('firstNum' in currentObject)) {
+
+    
+
+
+
+    if (!(decimalInput) && !(objProp in currentObject) 
+    ) {
         addNumber('0' +decimal);
-        decimalInput = true;
+        decimalInput = true; 
+        alert('1')
     }
- if (!(decimalInput) && !('secondNum' in currentObject)) {
-            addNumber('0' +decimal);
-                decimalInput = true;
+
+    if ('operator' in currentObject &&
+    !(decimalInput) && 
+  !('secondNum' in currentObject)  ) {
+        addNumber('0' +decimal);
+        decimalInput = true; 
+        alert('3')
+    
+    }
+
+    if ((objProp in currentObject) && 
+    !(decimalInput)    ) {
+            addNumber(decimal)
+            decimalInput = true;
+            alert('2')
         }
-        
-        if (!(decimalInput) && !('secondNum' in nextObject)) {
-            addNumber('0' +decimal);
-                decimalInput = true;
-        }
+    
+
+
+
+
+    // if (!(decimalInput) && !('operator' in currentObject)) {
+    //     addNumber('0' +decimal);
+    //         decimalInput = true; 
+    // }
+     
+    
+    //  if (!(decimalInput) && ('secondNum' in currentObject)) {
+    //     addNumber(decimal)
+    //     decimalInput = true;
+    
+    //  }
+
+
+
+  
+
  
 
-    else if(!(decimalInput)) {
-    addNumber(decimal)
-    decimalInput = true;
-    }
+    // else if(!(decimalInput)) {
+    // addNumber(decimal)
+    // decimalInput = true;
+    // }
 
 // this code is not needed after moving the flag variable switch in the add operator function
 // let secondOperand = currentObject.secondNum.toString()
