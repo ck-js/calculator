@@ -291,15 +291,27 @@ obj.calculate();
 }
 
 function addResult(obj, number) {
+    
+ 
     obj['result'] = number;
+
     
     }
     
 function displayResult(obj) {
 
-currentDisplay.textContent =
-obj['result']
+if (obj.result === 'Infinity') {
+     currentDisplay.textContent =
+'to the moon';
 
+    
+    
+}
+
+
+else {currentDisplay.textContent =
+obj['result']
+}
 } 
 
 
