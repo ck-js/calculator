@@ -11,6 +11,9 @@ const operatorBtns = Array.from(document.getElementsByClassName('operator-btn'))
 const zeroBtn = document.getElementById('0')
 const equal = document.getElementById('equal')
 const allClear = document.getElementById('ac')
+const decimal = document.getElementById('decimal')
+const deleteNumber = document.getElementById('delete')
+
 
 numberBtns.forEach(btn => 
     btn.addEventListener('click', e =>
@@ -73,10 +76,6 @@ equal.addEventListener('click', () => {
         return;
     }
 
-
-
-
-
 })
 
 allClear.addEventListener('click', () => {
@@ -84,7 +83,6 @@ allClear.addEventListener('click', () => {
     clearAllProperties(nextObject)
 })
 
-const decimal = document.getElementById('decimal')
 decimal.addEventListener('click', e => {
     if (!('secondNum' in currentObject)) {
     addDecimal('firstNum', e.target.textContent)
@@ -92,86 +90,25 @@ decimal.addEventListener('click', e => {
     } else {
         addDecimal('secondNum', e.target.textContent)
     }
+})    
+
+deleteNumber.addEventListener('click', () => {
+    deleteLastNumber()
+
 })
-let decimalInput = false;
-function addDecimal(objProp,decimal) {
-    
-alert(objProp)
-    
 
-    if (!(decimalInput) && !(objProp in currentObject) 
-    ) {
-        addNumber('0' +decimal);
-        decimalInput = true; 
-        alert('1')
-    }
+function deleteLastNumber() {
+    let firstOperand = currentObject['firstNum'];
+    let newOperand = firstOperand.slice(0, -1)
+    currentObject['firstNum'] = newOperand;
 
-    if ('operator' in currentObject &&
-    !(decimalInput) && 
-  !('secondNum' in currentObject)  ) {
-        addNumber('0' +decimal);
-        decimalInput = true; 
-        alert('3')
-    }
-
-    if (('firstNum'in nextObject) &&
-    !(decimalInput) &&
-    !('secondNum' in nextObject)) {
-        addNumber('0' +decimal);
-        decimalInput = true; 
-    alert('4')
-    
-    }
-    
-
-
-
-
-    if ((objProp in currentObject) && 
-    !(decimalInput)    ) {
-            addNumber(decimal)
-            decimalInput = true;
-            alert('2')
-        }
-    
-
-
-
-    // if (!(decimalInput) && !('operator' in currentObject)) {
-    //     addNumber('0' +decimal);
-    //         decimalInput = true; 
-    // }
-     
-    
-    //  if (!(decimalInput) && ('secondNum' in currentObject)) {
-    //     addNumber(decimal)
-    //     decimalInput = true;
-    
-    //  }
-
-
-
-  
-
- 
-
-    // else if(!(decimalInput)) {
-    // addNumber(decimal)
-    // decimalInput = true;
-    // }
-
-// this code is not needed after moving the flag variable switch in the add operator function
-// let secondOperand = currentObject.secondNum.toString()
-
-    // if (secondOperand.includes('.')) {
-    //     decimalInput = true;
-    // }
-    
-
+    currentDisplay.textContent = currentObject.firstNum;
     
 }
 
-    
+
+
+
 
 
 
@@ -257,8 +194,6 @@ console.log('Second operation has not began');
 
 
 
- 
-
 function calculate(obj) {
 
 obj.calculate = function() {
@@ -326,6 +261,49 @@ function clearCurrentDisplay() {
 currentDisplay.textContent = ' ';
 
 }
+
+
+let decimalInput = false;
+function addDecimal(objProp,decimal) {
+    
+alert(objProp)
+    
+
+    if (!(decimalInput) && !(objProp in currentObject) 
+    ) {
+        addNumber('0' +decimal);
+        decimalInput = true; 
+        alert('1')
+    }
+
+    if ('operator' in currentObject &&
+    !(decimalInput) && 
+  !('secondNum' in currentObject)  ) {
+        addNumber('0' +decimal);
+        decimalInput = true; 
+        alert('3')
+    }
+
+    if (('firstNum'in nextObject) &&
+    !(decimalInput) &&
+    !('secondNum' in nextObject)) {
+        addNumber('0' +decimal);
+        decimalInput = true; 
+    alert('4')
+    
+    }
+    
+
+    if ((objProp in currentObject) && 
+    !(decimalInput)    ) {
+            addNumber(decimal)
+            decimalInput = true;
+            alert('2')
+        }
+    
+    
+}
+
 
 
 
