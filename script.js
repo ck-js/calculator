@@ -93,16 +93,27 @@ decimal.addEventListener('click', e => {
 })    
 
 deleteNumber.addEventListener('click', () => {
-    deleteLastNumber()
+    
+    if ('secondNum' in nextObject) {
+        deleteLastNumber(nextObject, 'secondNum')    
+    }
+    else if ('secondNum' in currentObject) {
+        deleteLastNumber(currentObject, 'secondNum')    
+    }
+    else if ('firstNum' in currentObject) {
+        deleteLastNumber(currentObject, 'firstNum')    
+    }
+    
+
 
 })
 
-function deleteLastNumber() {
-    let firstOperand = currentObject['firstNum'];
+function deleteLastNumber(obj, key) {
+    let firstOperand = obj[key];
     let newOperand = firstOperand.slice(0, -1)
-    currentObject['firstNum'] = newOperand;
+    obj[key] = newOperand;
 
-    currentDisplay.textContent = currentObject.firstNum;
+    currentDisplay.textContent = obj[key];
     
 }
 
