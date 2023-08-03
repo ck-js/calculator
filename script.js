@@ -15,6 +15,18 @@ const decimal = document.getElementById('decimal')
 const deleteNumber = document.getElementById('delete')
 
 
+const kbdNumberInput = window.addEventListener('keydown', e => {
+    
+    for (let i = 0; i <= 9; i++) {
+    if (e.key.includes([i])) {
+    addNumber(e.key)
+}
+    }
+
+})
+
+
+
 numberBtns.forEach(btn => 
     btn.addEventListener('click', e =>
 addNumber(e.target.textContent)
@@ -104,18 +116,7 @@ deleteNumber.addEventListener('click', () => {
         deleteLastNumber(currentObject, 'firstNum')    
     }
     
-
-
 })
-
-function deleteLastNumber(obj, key) {
-    let firstOperand = obj[key];
-    let newOperand = firstOperand.slice(0, -1)
-    obj[key] = newOperand;
-
-    currentDisplay.textContent = obj[key];
-    
-}
 
 
 
@@ -173,8 +174,6 @@ function updateCurrentDisplay() {
     currentDisplay.textContent = nextObject['secondNum']; 
 }
 }
-
-
 
 
 function addOperator(e) {
@@ -250,10 +249,8 @@ if (obj.result === 'Infinity') {
      currentDisplay.textContent =
 'to the moon';
 
-    
-    
+       
 }
-
 
 else {currentDisplay.textContent =
 obj['result']
@@ -315,7 +312,14 @@ alert(objProp)
     
 }
 
+function deleteLastNumber(obj, key) {
+    let firstOperand = obj[key];
+    let newOperand = firstOperand.slice(0, -1)
+    obj[key] = newOperand;
 
+    currentDisplay.textContent = obj[key];
+    
+}
 
 
 
