@@ -25,6 +25,64 @@ const kbdNumberInput = window.addEventListener('keydown', e => {
 
 })
 
+const kbdOperatorInput = window.addEventListener('keydown', e =>{
+    if (e.keyCode == '187') {
+        if (e.key == '+') {
+            addOperator('+')
+        }
+        // if (e.key == '=') {
+        //     addOperator('=')
+        // }
+    }
+if (e.key == '-') {
+    addOperator('-')
+}
+if (e.key == '*') {
+    addOperator('*')
+}
+if (e.key == '/') {
+    addOperator('/')
+}
+if (e.keyCode == '13') {
+    if (('firstNum' in currentObject) && ('secondNum' in currentObject) ||
+    ('firstNum' in nextObject) && ('secondNum' in nextObject)){
+    
+   if (!('operator' in nextObject)) {
+    calculate(currentObject);
+    displayResult(currentObject); 
+   } else {
+    calculate(nextObject);
+    displayResult(nextObject); 
+}
+    } else {
+        return;
+    }
+
+}
+if (e.keyCode == '8') {
+    
+    if ('secondNum' in nextObject) {
+        deleteLastNumber(nextObject, 'secondNum')    
+    }
+    else if ('secondNum' in currentObject) {
+        deleteLastNumber(currentObject, 'secondNum')    
+    }
+    else if ('firstNum' in currentObject) {
+        deleteLastNumber(currentObject, 'firstNum')    
+    }
+
+
+
+
+}
+
+
+
+
+console.log(e.keyCode);
+})
+
+
 
 
 numberBtns.forEach(btn => 
@@ -75,7 +133,6 @@ equal.addEventListener('click', () => {
     if (('firstNum' in currentObject) && ('secondNum' in currentObject) ||
     ('firstNum' in nextObject) && ('secondNum' in nextObject)){
     
-
 
    if (!('operator' in nextObject)) {
     calculate(currentObject);
