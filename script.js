@@ -72,23 +72,33 @@ if (e.keyCode == '8') {
     }
 
 
+}
 
+console.log(e.keyCode);
+})
+
+numberBtns.forEach(button => {
+    button.addEventListener('click', e => {
+        addNumber(e.target.textContent)
+        addBorder(e)
+    })
+})
+
+function addBorder(e) {
+numberBtns.forEach(btn => {
+    btn.classList.remove('clicking')
+})
+e.target.classList.add('clicking')
 
 }
 
 
 
 
-console.log(e.keyCode);
-})
 
 
 
 
-numberBtns.forEach(btn => 
-    btn.addEventListener('click', e =>
-addNumber(e.target.textContent)
-))
 operatorBtns.forEach(btn => 
     btn.addEventListener('click', e =>
     addOperator(e.target.textContent))
@@ -182,6 +192,7 @@ deleteNumber.addEventListener('click', () => {
 
 
 function addNumber(e) {
+
 
     
     if (!('secondNum' in currentObject) && (
