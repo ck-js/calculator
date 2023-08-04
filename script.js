@@ -20,6 +20,7 @@ const kbdNumberInput = window.addEventListener('keydown', e => {
     for (let i = 0; i <= 9; i++) {
     if (e.key.includes([i])) {
     addNumber(e.key)
+    addBorder(e)
 }
     }
 
@@ -87,12 +88,11 @@ numberBtns.forEach(button => {
 function addBorder(e) {
 numberBtns.forEach(btn => {
     btn.classList.remove('clicking')
+    
 })
 e.target.classList.add('clicking')
 
 }
-
-
 
 
 
@@ -320,8 +320,11 @@ if (obj.result === 'Infinity') {
        
 }
 
-else {currentDisplay.textContent =
-obj['result']
+else {
+    currentDisplay.textContent =
+obj['result'];
+previousDisplay.textContent =
+`${obj['firstNum']} ${obj['operator']} ${obj['secondNum']}`
 }
 } 
 
