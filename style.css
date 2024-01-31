@@ -99,7 +99,23 @@ padding-right: 10px;
 }
 #ac {
     grid-column: 1 / span 2;
+    color: black;
 }
+#delete {
+    color: black;
+}
+#zero {
+    color: black;
+}
+#decimal {
+    color: black;
+}
+#equal {
+    color: black;
+}
+
+
+
 #divide {
     grid-column: 4 / span 2;
 }

@@ -281,25 +281,25 @@ function calculate(obj) {
 obj.calculate = function() {
 if (this.operator === '+') {
     let result = `${+this.firstNum + +this.secondNum}`
-    alert(result)
+    // alert(result)
     // currentObject['result'] = result
     addResult(obj, result)
 }
 if (this.operator === '-') {
     let result = `${+this.firstNum - +this.secondNum}`
-    alert(result)
+
     // currentObject['result'] = result
     addResult(obj, result)
 }
 if (this.operator === '*') {
     let result = `${+this.firstNum * +this.secondNum}`
-    alert(result)
+    
     // currentObject['result'] = result
     addResult(obj, result)
 }
 if (this.operator === '/') {
     let result = `${+this.firstNum / +this.secondNum}`
-    alert(result)
+
     // currentObject['result'] = result
     addResult(obj, result)
 }
