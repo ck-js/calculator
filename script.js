@@ -15,6 +15,10 @@ const decimal = document.getElementById('decimal')
 const deleteNumber = document.getElementById('delete')
 
 
+
+
+
+
 const kbdNumberInput = window.addEventListener('keydown', e => {
     
     for (let i = 0; i <= 9; i++) {
@@ -414,6 +418,8 @@ console.log(result);
         
     }
 }
+
+
 
 
 
